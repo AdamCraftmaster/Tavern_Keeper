@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="256" height="256" src="https://cdn.discordapp.com/avatars/722054700308103200/b2cea450ca518f58879f470f01644245.webp?size=256">
+  <img width="256" height="256" src="https://cdn.discordapp.com/avatars/722054700308103200/b3835bfac1243bd6b2093a1841377ebf.webp?size=256">
 </p>
   
 <h3 align="center">Tavern Keeper</h3>
