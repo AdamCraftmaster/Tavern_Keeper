@@ -38,6 +38,7 @@ module.exports = {
 						.setTitle('Rock Paper Scissors')
 						.setDescription([`
 						${emoji} vs ${botChoice}
+
 						${result}
 						`]);
 

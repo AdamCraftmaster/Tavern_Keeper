@@ -1,14 +1,19 @@
 /* eslint-disable no-unused-vars */
 const { MessageEmbed } = require('discord.js');
-const prefix = process.env.BOT_PREFIX;
+const Guild = require('../../models/guild');
 
 module.exports = {
 	name: 'tos',
 	category: 'Info',
-	description: 'Terms of service for the bot.',
+	description: 'Shows the terms of service of the bot.',
 	aliases: ['termsofservice'],
 	usage: 'tos',
 	run: async (client, message, args) => {
+		const settings = await Guild.findOne({
+			guildID: message.guild.id,
+		});
+
+		const prefix = settings.prefix;
 		const pEmbed = new MessageEmbed()
 			.setThumbnail('https://www.symphonyenvironmental.com/wp-content/uploads/2019/10/Terms-and-conditions-icon-V2.png')
 			.setTitle('**Terms of Service**')

@@ -2,7 +2,7 @@ module.exports = {
 	name: 'unpin',
 	aliases: [],
 	category: 'Moderation',
-	description: 'Unpin a specific messaged from the channel.',
+	description: 'Unpin a specific messaged to the channel.',
 	usage: 'unpin <message>',
 	run: async (bot, message, args) => {
 		if(!message.member.hasPermission('MANAGE_MESSAGES')) {
@@ -34,7 +34,6 @@ module.exports = {
 				});
 		}
 		catch (e) {
-			console.log(e);
 			return message.channel.send(
 				'<:vError:725270799124004934> An error occured, please try again!',
 			);

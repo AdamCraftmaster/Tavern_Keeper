@@ -7,7 +7,6 @@ module.exports = {
 	description: 'Enlarge a specified emoji.',
 	aliases: [],
 	usage: 'enlarge <emoji>',
-	guildOnly: true,
 	run: async (client, message, args) => {
 		const emoji = args[0];
 		if (!emoji) {
@@ -22,6 +21,8 @@ module.exports = {
 			const embed = new Discord.MessageEmbed()
 				.setTitle(`Enlarged version of: ${emoji}`)
 				.setColor('BLUE')
+				.setFooter(`Requested by ${message.author.tag}`)
+				.setTimestamp()
 				.setImage(`https://cdn.discordapp.com/emojis/${custom.id}.${custom.animated ? 'gif' : 'png'}`);
 			return message.channel.send(embed);
 		}
@@ -34,7 +35,9 @@ module.exports = {
 			}
 			const embed = new Discord.MessageEmbed()
 				.setTitle(`Enlarged version of ${emoji}`)
-				.setColor('#FFFF00')
+				.setColor('BLUE')
+				.setFooter(`Requested by ${message.author.tag}`)
+				.setTimestamp()
 				.setImage(parsed[0].url);
 			return message.channel.send(embed);
 		}

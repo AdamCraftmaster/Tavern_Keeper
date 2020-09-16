@@ -6,11 +6,11 @@ module.exports = {
 	category: 'Misc',
 	description: 'Helps you solve a math calculation.',
 	aliases: ['calculate'],
-	usage: 'math <value> <operator> <value>',
+	usage: 'math <equation>',
 	run: async (client, message, args) => {
 		if (!args[0]) {
 			return message.channel.send(
-				'Please input a calculation',
+				'<:vError:725270799124004934> Please provide a valid calculation',
 			);
 		}
 		let resp;
@@ -19,7 +19,7 @@ module.exports = {
 		}
 		catch (e) {
 			return message.channel.send(
-				'Please input a valid calculation',
+				'<:vError:725270799124004934> Please provide a valid calculation',
 			);
 		}
 
@@ -27,11 +27,10 @@ module.exports = {
 			.setColor('BLUE')
 			.setTitle('Math Calculation')
 			.addField('Input', `\`\`\`js\n${args.join(' ')}\`\`\``)
-			.addField('Output', `\`\`\`js\n${resp}\`\`\``);
+			.addField('Output', `\`\`\`js\n${resp}\`\`\``)
+			.setFooter(`Requested by ${message.author.tag}`)
+			.setTimestamp();
 
 		message.channel.send(embed);
-
 	},
-
 };
-

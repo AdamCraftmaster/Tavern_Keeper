@@ -6,7 +6,6 @@ module.exports = {
 	description: 'Ask the magic 8-ball for an answer.',
 	aliases: ['ask'],
 	usage: '8ball <question>',
-	guildOnly: true,
 	run: async (client, message, args) => {
 		const question = args[0];
 		if (!question) {
@@ -14,7 +13,7 @@ module.exports = {
 				'<:vError:725270799124004934> Please provide a valid question!',
 			);
 		}
-		const response = responses[Math.floor(Math.random() * responses.length - 1)];
+		const response = responses[Math.floor(Math.random() * responses.length)];
 		message.channel.send(`${response}`);
 	},
 };

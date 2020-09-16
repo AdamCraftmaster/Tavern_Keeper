@@ -22,7 +22,6 @@ module.exports = {
 			response = await fetch(url).then(res => res.json());
 		}
 		catch (e) {
-      console.log(e)
 			return message.channel.send(
 				'<:vError:725270799124004934> An error occured, please try again!',
 			);
@@ -49,7 +48,6 @@ module.exports = {
 			message.channel.send(embed);
 		}
 		catch (err) {
-			console.log(err)
 			return message.channel.send(
 				'<:vError:725270799124004934> Please provide a valid user',
 			);

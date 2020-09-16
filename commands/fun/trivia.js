@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const fetch = require('node-fetch');
-const { MessageEmbed } = require('discord.js');
 const h2p = require('html2plaintext');
+const { MessageEmbed } = require('discord.js');
 const { capitalizeFirstLetter } = require('../../functions');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
 	aliases: ['quiz'],
 	usage: 'trivia',
 	run: async (client, message, args) => {
-		const filter = m => m.author.id === message.author.id;
+		const filter = (m) => m.author.id === message.author.id;
 		const url = 'https://opentdb.com/api.php?amount=1&type=boolean';
 		let response;
 		try {

@@ -9,14 +9,19 @@ module.exports = {
 	aliases: ['servers'],
 	usage: 'guilds',
 	run: async (client, message, args) => {
-		if (message.author.id !== BOT_OWNER) return;
+		if(message.author.id !== BOT_OWNER) {
+			return message.channel.send(
+				'<:vError:725270799124004934> You must have the following permissions to use that: Bot Owner.',
+			);
+		}
 
 		const list = client.guilds.cache.map(guild => `${guild.name} (${guild.id})`).join('\n');
 
 		const botembed = new MessageEmbed()
-			.setDescription(`**${client.user.username}** is currently in **${message.client.guilds.cache.size}** servers.`)
-			.setColor('BLUE')
-			.addField('Servers', list);
+			.setTitle(`${client.user.username}'s Server List`)
+			.setDescription(list)
+			.setFooter(`Total Servers: ${client.guilds.cache.size}`)
+			.setColor('BLUE');
 		message.channel.send(botembed);
 	},
 };

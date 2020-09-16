@@ -1,5 +1,4 @@
-const { isHex } = require('../../functions');
-const { stringToHex } = require('../../functions');
+const { isHex, stringToHex } = require('../../functions');
 const fetch = require('node-fetch');
 const { MessageEmbed } = require('discord.js');
 
@@ -42,7 +41,9 @@ module.exports = {
 			.addFields(
 				{ name: 'RGB Value', value: `${response.rgb}` },
 				{ name: 'Hex Value', value: `#${colour}` },
-			);
+			)
+			.setFooter(`Requested by ${message.author.tag}`)
+			.setTimestamp();
 		message.channel.send(embed);
 	},
 };

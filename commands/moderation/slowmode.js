@@ -7,18 +7,26 @@ module.exports = {
 	description: 'Set the slowmode for a specific channel.',
 	usage: 'slowmode [channel] <time>',
 	run: async (bot, message, args) => {
-		if(!message.member.hasPermission('BAN_MEMBERS')) {
+		if(!message.member.hasPermission('MANAGE_CHANNELS')) {
 			return message.channel.send(
 				'<:vError:725270799124004934> You must have the following permissions to use that: Ban Members.',
 			);
 		}
 
-		let channel = message.mentions.channels.first(),
-			time = args.slice(1).join(' ');
+		let channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[0]),
+			time = args[1];
 
-		if (!channel) time = args.join(' '), channel = message.channel;
+		if (!channel) {
+			time = args[0];
+			channel = message.channel;
+		}
 
-		if (args[0] === 'off') {
+		if (!args[0]) {
+			return message.channel.send(
+				'<:vError:725270799124004934> Please include a valid time format or a valid channel.',
+			);
+		}
+		else if (args[0].toLowerCase() === 'off') {
 			channel.setRateLimitPerUser(0);
 			return message.channel.send(`<:vSuccess:725270799098970112> Slowmode for <#${channel.id}> has been deactivated.`);
 		}
@@ -28,7 +36,7 @@ module.exports = {
 			const convert = ms(time);
 			const toSecond = Math.floor(convert / 1000);
 
-			if (!toSecond || toSecond == undefined) return message.channel.send('<:vError:725270799124004934> Please include a valid time format.');
+			if (!toSecond) return message.channel.send('<:vError:725270799124004934> Please include a valid time format.');
 
 			if (toSecond > 21600) return message.channel.send('<:vError:725270799124004934> Timer should be less than or equal to 6 hours.');
 			else if (toSecond < 1) return message.channel.send('<:vError:725270799124004934> Timer should be more than or equal to 1 second.');

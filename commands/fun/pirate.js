@@ -1,11 +1,11 @@
 const fetch = require('node-fetch');
 
 module.exports = {
-	name: 'flip',
+	name: 'pirate',
 	category: 'Fun',
-	description: 'pilF specified text.',
+	description: 'Converts a specified text into pirate text.',
 	aliases: [],
-	usage: 'flip <message>',
+	usage: 'pirate <message>',
 	run: async (client, message, args) => {
 		const text = args.slice().join(' ');
 		if(!text) {
@@ -13,7 +13,7 @@ module.exports = {
 				'<:vError:725270799124004934> Please provide valid text.',
 			);
 		}
-		const url = `https://www.no-api-key.com/api/v1/flip-text?text=${text}`;
+		const url = `https://api.funtranslations.com/translate/pirate.json?text=${text}`;
 
 		let response;
 		try {
@@ -24,6 +24,6 @@ module.exports = {
 				'<:vError:725270799124004934> An error occured, please try again!',
 			);
 		}
-		message.channel.send(response.message);
+		message.channel.send(response.contents.translated);
 	},
 };

@@ -7,7 +7,7 @@ module.exports = {
 	category: 'Misc',
 	description: 'Get a random fact from the internet.',
 	aliases: [],
-	usage: 'quotes',
+	usage: 'randomfact',
 	run: async (client, message, args) => {
 		const url = 'https://useless-facts.sameerkumar.website/api';
 
@@ -23,7 +23,9 @@ module.exports = {
 		const embed = new MessageEmbed()
 			.setColor('BLUE')
 			.setDescription(response.data)
-			.setTitle('Random Fact');
+			.setTitle('Random Fact')
+			.setFooter(`Requested by ${message.author.tag}`)
+			.setTimestamp();
 
 		message.channel.send(embed);
 	},

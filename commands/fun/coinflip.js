@@ -1,6 +1,6 @@
-/* eslint-disable no-const-assign */
 /* eslint-disable no-unused-vars */
 const { MessageEmbed } = require('discord.js');
+
 
 module.exports = {
 	name: 'coinflip',
@@ -18,7 +18,9 @@ module.exports = {
 				.setColor('BLUE')
 				.setDescription(
 					`${response}!`,
-				);
+				)
+				.setFooter(`Requested by ${message.author.tag}`)
+				.setTimestamp();
 			msg.edit(Embed);
 		});
 	},

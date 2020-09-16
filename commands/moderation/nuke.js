@@ -1,5 +1,6 @@
-/* eslint-disable no-unused-vars */
 const { MessageEmbed } = require('discord.js');
+const moment = require('moment');
+const Guild = require('../../models/guild');
 
 module.exports = {
 	name: 'nuke',
@@ -8,16 +9,31 @@ module.exports = {
 	aliases: [],
 	usage: 'nuke',
 	run: async (client, message, args) => {
-		if (message.member.hasPermission('ADMINISTRATOR')) {
+		const settings = await Guild.findOne({
+			guildID: message.guild.id,
+		});
+		const logs = settings.settings.modlog;
+		const channel = message.guild.channels.cache.get(logs);
+		if (!channel) return;
+
+		if (!message.member.hasPermission('ADMINISTRATOR')) {
 			return message.channel.send(
-				'You do not have permission to use this command.',
+				'<:vError:725270799124004934> You must have the following permissions to use that: Administrator.',
 			);
 		}
 
 		if (!message.guild.me.hasPermission('MANAGE_CHANNELS')) {
 			return message.channel.send(
-				'I  do not have permission to use this command.',
+				'<:vError:725270799124004934> I must have the following permissions to use that: Manage Channel.',
 			);
+		}
+
+		let Reason = args[0];
+		if(!Reason) {
+			Reason = 'No reason specified';
+		}
+		else {
+			Reason = args.slice().join(' ');
 		}
 
 		await message.channel.clone().then((ch) =>{
@@ -28,5 +44,9 @@ module.exports = {
 				.setImage('https://images-ext-1.discordapp.net/external/rGT3vhB8xqYng_StlUaV3jNAgdIpo9SISDskCjxq5Ug/%3Fcid%3D790b7611e787b306d4cf5d03b88cc2c6870eb35b8f37e008%26rid%3Dgiphy.gif/https/media1.giphy.com/media/uSHMDTUL7lKso/giphy.gif');
 			ch.send(embed);
 		}); message.channel.delete();
+
+		channel.send(
+			`\`[${moment(message.createdTimestamp).format('HH:mm:ss')}]\` ☢ \`${message.channel.name}\` has been nuked by **${message.author.username}**#${message.author.discriminator}\n\`[Reason]\` ${Reason}`,
+		);
 	},
 };
