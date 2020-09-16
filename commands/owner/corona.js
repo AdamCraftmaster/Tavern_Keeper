@@ -6,7 +6,7 @@ module.exports = {
 	name: 'corona',
 	description: 'Shows the statistics for covid-19 worldwide or a specified loction.',
 	usage: 'corona <location>',
-	category: 'Info',
+	category: 'Owner',
 	aliases: ['covid', 'cv'],
 	run: async (client, message, args) => {
 		const baseUrl = 'https://corona.lmao.ninja/v2';

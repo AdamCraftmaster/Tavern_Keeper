@@ -4,9 +4,9 @@ module.exports = async (client, message) => {
   if (message.author.bot) return;
   if (!message.guild) return;
 
-  if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) {
-    message.channel.send(`My current prefix for this guild is \`${prefix}\``);
-  }
+	if (message.content.match(`^<@!?${client.user.id}>( |)$`)) {
+		message.channel.send(`${message.guild.name}'s prefix is \`${prefix}\``);
+	}
 
   if (!message.content.startsWith(prefix)) return;
 
