@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 module.exports = {
 	name: 'fly',
-	category: 'Animals',
+	category: 'Image',
 	description: 'Sends a fake image of a fly that looks suspiciously real.',
 	aliases: [],
 	usage: 'fly',

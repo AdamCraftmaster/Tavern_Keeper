@@ -4,7 +4,7 @@ const { BOT_OWNER } = process.env;
 
 module.exports = {
 	name: 'kill',
-	category: 'Fun',
+	category: 'Owner',
 	description: 'Sick of someone? Easy! Just kill them! (virtually)',
 	aliases: [],
 	usage: 'kill <user>',

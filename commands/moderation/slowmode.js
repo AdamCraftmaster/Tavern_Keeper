@@ -1,3 +1,4 @@
+const { parseDur } = require('../../functions');
 const ms = require('ms');
 
 module.exports = {
@@ -6,10 +7,16 @@ module.exports = {
 	category: 'Moderation',
 	description: 'Set the slowmode for a specific channel.',
 	usage: 'slowmode [channel] <time>',
-	run: async (bot, message, args) => {
+	run: async (client, message, args) => {
 		if(!message.member.hasPermission('MANAGE_CHANNELS')) {
 			return message.channel.send(
-				'<:vError:725270799124004934> You must have the following permissions to use that: Ban Members.',
+				'<:vError:725270799124004934> You must have the following permissions to use that: Manage Channels.',
+			);
+		}
+
+		if(!message.guild.me.hasPermission('MANAGE_CHANNELS')) {
+			return message.channel.send(
+				'<:vError:725270799124004934> I must have the following permissions to use that: Manage Channels.',
 			);
 		}
 
@@ -23,7 +30,7 @@ module.exports = {
 
 		if (!args[0]) {
 			return message.channel.send(
-				'<:vError:725270799124004934> Please include a valid time format or a valid channel.',
+				`The current slowmode for ${message.channel} is ${parseDur(channel.rateLimitPerUser * 1000)}`,
 			);
 		}
 		else if (args[0].toLowerCase() === 'off') {
