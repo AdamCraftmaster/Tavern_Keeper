@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 module.exports = {
-	name: 'fly',
-	category: 'Animals',
-	description: 'Sends a fake image of a fly that looks suspiciously real.',
+	name: 'facepalm',
+	category: 'Image',
+	description: 'I have no comments...',
 	aliases: [],
-	usage: 'fly',
+	usage: 'facepalm',
 	run: (client, message, args) => {
 		if(!message.guild.me.hasPermission('ATTACH_FILES')) {
 			return message.channel.send(
@@ -12,6 +12,6 @@ module.exports = {
 			);
 		}
 
-		message.channel.send({ files: ['./assets/image/fly.png'] }).then(message.delete());
+		message.channel.send({ files: ['./assets/image/facepalm.gif'] });
 	},
 };

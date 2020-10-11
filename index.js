@@ -9,7 +9,7 @@ client.category = new Collection();
 client.snipes = new Map();
 
 ['command', 'event'].forEach(handler => {
-  require(`./handlers/${handler}`)(client);
+	require(`./handlers/${handler}`)(client);
 });
 
 keepAlive();

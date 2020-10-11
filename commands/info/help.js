@@ -10,9 +10,28 @@ module.exports = {
 	description: 'Returns the help page, or one specific command info.',
 	usage: 'help [command/category]',
 	run: async (client, message, args) => {
-		const prefix = BOT_PREFIX;
 
-		if (args[0]) {
+		if (message.author.id === BOT_OWNER && args[0] === 'all') {
+			const categories = [...new Set(client.commands.map(cmd => cmd.category))];
+			const embed = new MessageEmbed()
+				.setTitle(`${client.user.username}'s Commands`)
+				.setFooter(`Requested by ${message.author.tag} `)
+				.setTimestamp()
+				.setColor('BLUE')
+				.setDescription([`
+			This server's prefix is \`${BOT_PREFIX}\`.
+			For more info on a specific command, type \`${BOT_PREFIX}help <command>\`.
+			Visit the bot's website [here](https://tavern-keeper.weebly.com/) for more info on certain features.
+			`]);
+
+			for (const id of categories) {
+				const category = client.commands.filter(cmd => cmd.category === id);
+
+				embed.addField(`${id} (${category.size})`, category.map(cmd => `\`${cmd.name}\``).join(' '));
+			}
+			return message.channel.send(embed);
+		}
+		else if (args[0]) {
 			const category = client.category.get(args[0].toLowerCase());
 			const cmd = client.commands.get(args[0].toLowerCase()) || client.commands.get(client.aliases.get(args[0].toLowerCase()));
 
