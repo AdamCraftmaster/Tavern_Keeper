@@ -3,11 +3,11 @@ const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 module.exports = {
-	name: 'platypus',
+	name: 'lizard',
 	category: 'Animals',
 	description: 'How do you describe them again?',
-	aliases: ['otters'],
-	usage: 'platypus',
+	aliases: [],
+	usage: 'lizard',
 	run: async (client, message, args) => {
 		const url = 'https://nekos.life/api/v2/img/lizard';
 

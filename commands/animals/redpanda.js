@@ -3,11 +3,11 @@ const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 
 module.exports = {
-	name: 'otter',
+	name: 'redpanda',
 	category: 'Animals',
 	description: 'What do you prefer? Red pandas or Pandas.',
-	aliases: ['redpanda'],
-	usage: 'redpandas',
+	aliases: ['redpandas'],
+	usage: 'redpanda',
 	run: async (client, message, args) => {
 		const url = 'https://some-random-api.ml/img/red_panda';
 

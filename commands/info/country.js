@@ -11,7 +11,7 @@ module.exports = {
 		const country = args.slice().join(' ');
 		if(!country) {
 			return message.channel.send(
-				'<:vError:725270799124004934> Please provide a valid Pokémon.',
+				'<:vError:725270799124004934> Please provide a valid country.',
 			);
 		}
 		const url = 'https://restcountries.eu/rest/v2/name/' + country;

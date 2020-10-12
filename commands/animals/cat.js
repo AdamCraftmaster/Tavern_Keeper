@@ -9,7 +9,7 @@ module.exports = {
 	aliases: ['cats', 'kitty', 'meow'],
 	usage: 'cat',
 	run: async (client, message, args) => {
-		const url = 'https://no-api-key.com/api/v1/animals/dog';
+		const url = 'https://no-api-key.com/api/v1/animals/cat';
 
 		let response;
 		try {
