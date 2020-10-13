@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -17,14 +18,6 @@ module.exports = {
 			return message.channel.send(
 				'<:vError:725270799124004934> Insufficient Permission! `MANAGE_CHANNELS` required.',
 			);
-		}
-
-		let Reason;
-		if(!Reason) {
-			Reason = 'No reason specified';
-		}
-		else {
-			Reason = args.slice().join(' ');
 		}
 
 		await message.channel.clone().then((ch) =>{
