@@ -2,7 +2,6 @@ module.exports = {
 	name: 'ban',
 	category: 'Moderation',
 	description: 'Ban a specified user from the server.',
-	aliases: [],
 	usage: 'ban <user> <reason>',
 	run: async (client, message, args) => {
 		if(!message.member.hasPermission('BAN_MEMBERS')) {

@@ -2,7 +2,6 @@ module.exports = {
 	name: 'kick',
 	category: 'Moderation',
 	description: 'Kick a specified user from the server.',
-	aliases: [],
 	usage: 'kick <user> <reason>',
 	run: async (client, message, args) => {
 		if(!message.member.hasPermission('KICK_MEMBERS')) {
