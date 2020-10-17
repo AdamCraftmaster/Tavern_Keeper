@@ -4,10 +4,12 @@ const { BOT_OWNER } = process.env;
 
 module.exports = {
 	name: 'kill',
-	category: 'Fun',
+	category: 'Owner',
 	description: 'Sick of someone? Easy! Just kill them! (virtually)',
 	usage: 'kill <user>',
 	run: async (client, message, args) => {
+		if(message.author.id !== BOT_OWNER) return;
+
 		const user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(x => x.user.username === args.slice(0).join(' ') || x.user.username === args[0]) || message.member;
 		if (user.id === BOT_OWNER) {
 			return message.channel.send(

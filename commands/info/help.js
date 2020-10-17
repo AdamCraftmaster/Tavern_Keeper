@@ -5,7 +5,7 @@ const { BOT_OWNER, BOT_PREFIX } = process.env;
 
 module.exports = {
 	name: 'help',
-	aliases: ['h', 'commands'],
+	aliases: ['commands'],
 	category: 'Info',
 	description: 'Returns the help page, or one specific command info.',
 	usage: 'help [command/category]',
@@ -21,7 +21,7 @@ module.exports = {
 				.setDescription([`
 			This server's prefix is \`${BOT_PREFIX}\`.
 			For more info on a specific command, type \`${BOT_PREFIX}help <command>\`.
-			Visit the bot's website [here](https://tavern-keeper.weebly.com/) for more info on certain features.
+			Visit the bot's website [here](https://tavernkeeper.ml) for more info on certain features.
 			`]);
 
 			for (const id of categories) {
@@ -71,16 +71,10 @@ module.exports = {
 				.setDescription([`
 				This server's prefix is \`${BOT_PREFIX}\`.
 				For more info on a specific command, type \`${BOT_PREFIX}help <command>\`.
-				Visit the bot's website [here](https://tavern-keeper.weebly.com/) for more info on certain features.
+				Visit the bot's website [here](https://tavernkeeper.ml) for more info on certain features.
 				`]);
 
-			let categories;
-			if(message.author.id !== BOT_OWNER) {
-				categories = [...new Set(client.commands.filter(cmd => cmd.category !== 'Owner').map(cmd => cmd.category))];
-			}
-			else {
-				categories = [...new Set(client.commands.map(cmd => cmd.category))];
-			}
+			const categories = [...new Set(client.commands.filter(cmd => cmd.category !== 'Owner').map(cmd => cmd.category))];
 
 			for (const id of categories) {
 				const category = client.commands.filter(cmd => cmd.category === id);

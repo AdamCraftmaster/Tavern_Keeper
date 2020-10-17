@@ -15,9 +15,7 @@ module.exports = {
 				.setColor('BLUE')
 				.setDescription(
 					`${rollDice()}!`,
-				)
-				.setFooter(`Requested by ${message.author.tag}`)
-				.setTimestamp();
+				);
 			msg.edit(Embed);
 		});
 	},
