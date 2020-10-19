@@ -5,6 +5,7 @@ module.exports = {
 	name: 'suggest',
 	category: 'Misc',
 	description: 'Make suggestion for the bot\'s upcoming features.',
+	aliases: [],
 	usage: 'suggest <suggestion>',
 	guildOnly: true,
 	run: async (client, message, args) => {

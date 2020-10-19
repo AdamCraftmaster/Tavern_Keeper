@@ -6,6 +6,7 @@ module.exports = {
 	name: 'kill',
 	category: 'Owner',
 	description: 'Sick of someone? Easy! Just kill them! (virtually)',
+	aliases: [],
 	usage: 'kill <user>',
 	run: async (client, message, args) => {
 		if(message.author.id !== BOT_OWNER) return;
