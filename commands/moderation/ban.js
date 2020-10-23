@@ -5,13 +5,7 @@ module.exports = {
 	aliases: ['banish'],
 	usage: 'ban <user> <reason>',
 	run: async (client, message, args) => {
-		if(!message.member.hasPermission('BAN_MEMBERS')) {
-			return message.channel.send(
-				'<:vError:725270799124004934> Insufficient Permission! `BAN_MEMBERS` required.',
-			);
-		}
-
-		if(!message.guild.me.hasPermission('BAN_MEMBERS')) {
+		if(!message.member.hasPermission('BAN_MEMBERS') || !message.guild.me.hasPermission('BAN_MEMBERS')) {
 			return message.channel.send(
 				'<:vError:725270799124004934> Insufficient Permission! `BAN_MEMBERS` required.',
 			);
