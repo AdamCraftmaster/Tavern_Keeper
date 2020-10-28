@@ -41,5 +41,4 @@ For support, questions, and comments, you can join the [Discord server](https://
 This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/zhon12345/Tavern-Keeper/blob/master/LICENSE) file for details.
 
 ## 🎫 Vote
-[![Tavern Keeper](https://dbots.co/api/v1/bots/722054700308103200/widget?size=medium)](https://dbots.co/bots/722054700308103200)
 [![Tavern Keeper](https://discord.boats/api/widget/722054700308103200)](https://discord.boats/bot/722054700308103200)
