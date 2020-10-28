@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { abl } = require('abl-wrapper');
+const { ASTROBOTLIST_TOKEN } = process.env;
 const { Client, Collection } = require('discord.js');
 const client = new Client({ disableMentions: 'everyone' });
 const keepAlive = require('./server');
@@ -12,8 +13,9 @@ client.snipes = new Map();
 ['command', 'event'].forEach(handler => {
 	require(`./handlers/${handler}`)(client);
 });
+
 setInterval(() => {
-	abl.count('token', client, (error, success) => {
+	abl.count(ASTROBOTLIST_TOKEN, client, (error, success) => {
 		if(error) throw new Error(error);
 		else console.log(success);
 	});
