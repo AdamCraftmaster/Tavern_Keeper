@@ -41,3 +41,4 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](https:
 
 ## 🎫 Vote
 [![Tavern Keeper](https://discord.boats/api/widget/722054700308103200)](https://discord.boats/bot/722054700308103200)
+[![Tavern Keeper](https://top.gg/api/widget/722054700308103200.svg?usernamecolor=FFFFFF&topcolor=000000)
